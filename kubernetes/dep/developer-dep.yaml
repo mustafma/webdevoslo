@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: developer-deployment
+spec:
+  selector:
+    matchLabels:
+      app: developer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: developer
+    spec:
+      containers:
+      - image: developerservice
+        imagePullPolicy: IfNotPresent
+        name: developer
+        env:
+        - name: ConnectionStrings__MyDbContext
+          value: 'Server=sql-svc,1433;Database=demo;User Id=sa;Password=Sdm4ever!;MultipleActiveResultSets=true'
+        - name: Rabbit__Host
+          value: 'rabbit-svc'
+        - name: Rabbit__Port
+          value: '5672'
+       
+      
+

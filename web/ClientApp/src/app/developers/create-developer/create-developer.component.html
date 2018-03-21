@@ -1,0 +1,21 @@
+<div class="developer-form-container">
+  <h3>Create developer</h3>
+  <form (ngSubmit)="createDeveloper()" [formGroup]="developerForm">
+    <mat-form-field style="width:100%">
+      <input matInput formControlName="name" placeholder="Name" style="width:100%"/>
+      <mat-error>Please enter a name</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width:100%">
+      <input matInput formControlName="hackerName" placeholder="Hacker name" style="width:100%"/>
+      <mat-error>Please enter a Hacker name</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width:100%">
+      <input matInput formControlName="location" placeholder="Location" style="width:100%"/>
+      <mat-error>Please enter a Location</mat-error>
+    </mat-form-field>
+    <mat-form-field style="width:100%">
+      <input matInput formControlName="bio" placeholder="Bio" style="width:100%"/>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="!developerForm.valid">Run</button>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+<h2>List of developers</h2>
+<mat-table #table [dataSource]="developerList">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="hackerName">
+    <mat-header-cell *matHeaderCellDef> Hacker name </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.hackerName}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="location">
+    <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="bio">
+    <mat-header-cell *matHeaderCellDef> Bio </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{element.bio}} </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

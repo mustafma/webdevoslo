@@ -1,0 +1,17 @@
+<mat-toolbar color="primary" style="display:flex; flex-direction:row">
+  <button mat-icon-button (click)="toggleMenu()">
+    <mat-icon aria-label="The side menu">menu</mat-icon>
+  </button>
+  <span>Blueback Tour of Developers</span>
+  <span style="flex:1"></span>
+
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="createDeveloper()">
+      <mat-icon>add_circle</mat-icon>
+      <span>Add developer</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

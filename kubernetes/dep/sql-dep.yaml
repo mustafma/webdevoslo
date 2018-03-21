@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sql-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sql
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sql
+    spec:
+      containers:
+      - image: microsoft/mssql-server-linux:latest
+        imagePullPolicy: IfNotPresent
+        name: sql
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: 'Y'
+        - name: SA_PASSWORD
+          value: 'Sdm4ever!'
+        - name: MSSQL_PID
+          value: 'Express'
+       
+      
+

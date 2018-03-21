@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: web-deployment
+spec:
+  selector:
+    matchLabels:
+      app: web
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: web
+        imagePullPolicy: IfNotPresent
+        name: web
+        ports:
+        - containerPort: 80
+        env:
+        - name: ConnectionStrings__MyDbContext
+          value: 'Server=sql-svc,1433;Database=demo;User Id=sa;Password=Sdm4ever!;MultipleActiveResultSets=true'
+        - name: Rabbit__Host
+          value: 'rabbit-svc'
+        - name: Rabbit__Port
+          value: '5672'
+       
+      
+

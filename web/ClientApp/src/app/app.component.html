@@ -1,0 +1,11 @@
+<div class='container mat-typography' style="display:flex; flex-direction: column; height: 100%">
+  <app-toolbar (menutoggle)="onToggleMenu()"></app-toolbar>
+  <mat-sidenav-container class="example-container" style="flex:1; padding-left: 2px;">
+      <mat-sidenav mode="over" position="start" [opened]="menuOpened">
+        <app-navigation-menu (onCloseMenu)="closeMenu()"></app-navigation-menu>
+      </mat-sidenav>
+      <mat-sidenav-content >
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  developerService:
+    image: developerservice
+    build: ./developerservice
+    depends_on:
+      - "rabbit"
+      - "sql"
+
+  messagesender:
+    image: messagesender
+    build: ./messageSender
+    depends_on:
+      - "rabbit"
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - "8080:15672"
+      - "8083:5672"
+  
+  web:
+    image: web
+    build: ./web
+    ports:
+      - "92:80"
+    depends_on:
+      - "rabbit"
+      - "sql"
+
+  sql:
+    image: microsoft/mssql-server-linux:latest
+    ports:
+      - "1933:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Sdm4ever!"
+      MSSQL_PID: "Express"
+      
